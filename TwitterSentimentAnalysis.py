@@ -38,7 +38,6 @@ while(0 in subjectivity):
     subjectivity.remove(0.0)
 
 #Generate histogram
-#sentimentDF = pd.DataFrame({'Polarity': polarity, 'Subjectivity': subjectivity})
 polarityDf = pd.DataFrame(polarity, columns=["Polarity"])
 subjectivityDf = pd.DataFrame(subjectivity, columns=["Subjectivity"])
 
