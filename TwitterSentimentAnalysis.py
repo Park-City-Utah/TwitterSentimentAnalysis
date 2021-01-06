@@ -30,11 +30,11 @@ for tweet in tweets:
     subjectivity.append(analysis.sentiment.subjectivity)  
 
 #Remove 0.0 (nutral) polarity
-while(0 in polarity):
+while(0.0 in polarity):
     polarity.remove(0.0)
 
 ##Remove 0.0 (nutral) polarity
-while(0 in subjectivity):
+while(0.0 in subjectivity):
     subjectivity.remove(0.0)
 
 #Generate histogram
