@@ -6,10 +6,10 @@ from textblob import TextBlob
 from TwitterSentimentFunct import remove_all_values
 
 #Authentical with tweepy OAuth and Twitter API
-apiKey= 'EkBBhhZwahr3Gpu4DPxq6qvfB'
-apiSecret= 'V8am0OABOmaxe3xZqP9dHUz2EVUBSDILUzjGaXncPHLryJmMLO'
-accessToken='1343669213538340865-fB7y4BBnqRlCNuRCylFONW7lW8AqgY'
-accessTokenSecret='1cqi5QaNcRz68KQqtGnTpCFbjFKgS2Fka1bpGIrQAhqaR'
+apiKey= 'CONSUMER_KEY_HERE'
+apiSecret= 'CONSUMER_SECRET_HERE'
+accessToken='ACCESS_TOKEN_HERE'
+accessTokenSecret='ACCESS_TOKEN_SECRET_HERE'
 
 auth = tweepy.OAuthHandler(apiKey, apiSecret)
 auth.set_access_token(accessToken, accessTokenSecret)
