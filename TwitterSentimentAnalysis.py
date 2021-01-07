@@ -30,12 +30,9 @@ for tweet in tweets:
     polarity.append(analysis.sentiment.polarity)
     subjectivity.append(analysis.sentiment.subjectivity) 
 
-
-#Remove 0.0 (nutral) polarity
-polarityList = remove_all_values(polarity, 0.0) 
-
-#Remove 0.0 (nuetral) subjectivity
-subjectivityList = remove_all_values(subjectivity, 0.0) 
+#Remove 0.0 (neutral) polarity & subjectivity
+polarity = remove_all_values(polarity, 0.0) 
+subjectivity = remove_all_values(subjectivity, 0.0) 
 
 #Generate histograms
 polarityDf = pd.DataFrame(polarity, columns=["Polarity"])
