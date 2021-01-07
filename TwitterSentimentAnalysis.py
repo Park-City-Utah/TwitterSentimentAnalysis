@@ -3,12 +3,13 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from textblob import TextBlob
+from TwitterSentimentFunct import remove_all_values
 
 #Authentical with tweepy OAuth and Twitter API
-apiKey= 'CONSUMER_KEY_HERE'
-apiSecret= 'CONSUMER_SECRET_HERE'
-accessToken='ACCESS_TOKEN_HERE'
-accessTokenSecret='ACCESS_TOKEN_SECRET_HERE'
+apiKey= 'EkBBhhZwahr3Gpu4DPxq6qvfB'
+apiSecret= 'V8am0OABOmaxe3xZqP9dHUz2EVUBSDILUzjGaXncPHLryJmMLO'
+accessToken='1343669213538340865-fB7y4BBnqRlCNuRCylFONW7lW8AqgY'
+accessTokenSecret='1cqi5QaNcRz68KQqtGnTpCFbjFKgS2Fka1bpGIrQAhqaR'
 
 auth = tweepy.OAuthHandler(apiKey, apiSecret)
 auth.set_access_token(accessToken, accessTokenSecret)
@@ -27,17 +28,16 @@ for tweet in tweets:
 
     #Create list of polarity & subjectivity for mean
     polarity.append(analysis.sentiment.polarity)
-    subjectivity.append(analysis.sentiment.subjectivity)  
+    subjectivity.append(analysis.sentiment.subjectivity) 
+
 
 #Remove 0.0 (nutral) polarity
-while(0.0 in polarity):
-    polarity.remove(0.0)
+polarityList = remove_all_values(polarity, 0.0) 
 
-##Remove 0.0 (nutral) polarity
-while(0.0 in subjectivity):
-    subjectivity.remove(0.0)
+#Remove 0.0 (nuetral) subjectivity
+subjectivityList = remove_all_values(subjectivity, 0.0) 
 
-#Generate histogram
+#Generate histograms
 polarityDf = pd.DataFrame(polarity, columns=["Polarity"])
 subjectivityDf = pd.DataFrame(subjectivity, columns=["Subjectivity"])
 
