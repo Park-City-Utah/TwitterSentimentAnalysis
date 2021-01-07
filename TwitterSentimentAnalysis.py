@@ -26,7 +26,7 @@ subjectivity = []
 for tweet in tweets:
     analysis = TextBlob(tweet.text)
 
-    #Create list of polarity & subjectivity
+    #Create list of polarity & subjectivity for mean
     polarity.append(analysis.sentiment.polarity)
     subjectivity.append(analysis.sentiment.subjectivity) 
 
