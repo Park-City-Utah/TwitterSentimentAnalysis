@@ -4,6 +4,10 @@ Program allows to pull twitter data (1000) in the form of tweets by keyword usin
 
 #Visualizations
 <img src=“./Visualizations/polarityWithZero.png" width="600">
+<br>
 <img src=“./Visualizations/polarityAdjustedForZero.png" width="600">
+<br>
 <img src=“./Visualizations/subjectivityWithZero.png" width="600">
+<br>
 <img src=“./Visualizations/subjectivityAdjustedForZero.png" width="600">
+
