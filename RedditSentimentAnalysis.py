@@ -10,28 +10,32 @@ reddit = praw.Reddit(client_id='Your_Reddit_Personal_Script',
                      client_secret='Your_Reddit_Secret',
                      user_agent='Your_Reddit_App_Name',
                      username='Your_Reddit_Username',
-                     password='Your_Reddit_Password')                   
+                     password='Your_Reddit_Password')                  
 
 #Get user input for Sentiment analysis text
-keyword = input("Enter keyword for subreddit: ")
+Subreddit = input("Enter a subreddit, or type 'all': ")
+keyword = input("Enter a keyword for search: ")
 
-subreddit = reddit.subreddit(keyword) 
+subreddit = reddit.subreddit(Subreddit) 
 
-top_subreddit = subreddit.top(limit=1000)
+top_subreddit = subreddit.search(keyword, limit=1000)
 
 polarity = []
 subjectivity = []
 
 for submission in top_subreddit:
-    print(submission.selftext)
-    analysis = TextBlob(submission.selftext)
+    print(submission.title)
+    #print(submission.selftext)
+
+    analysis = TextBlob(submission.title)
+    #analysis = TextBlob(submission.selftext)   #alternative method of analysis on text rather than title
 
     #Create list of polarity & subjectivity for mean
     polarity.append(analysis.sentiment.polarity)
     subjectivity.append(analysis.sentiment.subjectivity) 
 
 #Remove 0.0 (neutral) polarity & subjectivity
-polarity = remove_all_values(polarity, 0.0) 
+redditpolarity = remove_all_values(polarity, 0.0) 
 subjectivity = remove_all_values(subjectivity, 0.0) 
 
 #Output
@@ -39,8 +43,8 @@ print("Sentiment average Polarity: " + str(np.mean(polarity)))
 print("Sentiment average Subjectivity: " + str(np.mean(subjectivity)))
 
 #Generate histograms
-polarityDf = pd.DataFrame(polarity, columns=["Polarity"])
-subjectivityDf = pd.DataFrame(subjectivity, columns=["Subjectivity"])
+polarityDf = pd.DataFrame(polarity, columns=["Polarity - '" + keyword + "'"])
+subjectivityDf = pd.DataFrame(subjectivity, columns=["Subjectivity - '" + keyword + "'"])
 
 showHistograms = input("Show Historgrams? Y or N ")
 
